@@ -13,18 +13,25 @@
 .left-nav{
     display: flex;
     flex-direction: column;
-    gap: 20px;
     background-color: rgb(240, 240, 240);
     height:100vh;
-    width: 250px;
+    width: 230px;
+    border-right: 1px solid rgb(201, 200, 200);
+    flex-shrink: 0;
 }
 
 .left-nav a{
-    padding-left: 20px;
+    
+    padding: 15px 0px 15px 20px;
     font-size: 1.3rem;
     text-decoration: none;
     color: black;
 }
+
+.left-nav a:hover{
+    background-color: rgb(255, 255, 255);
+}
+
 .left-nav a:first-child{
     margin-top: 50px;
 }
@@ -33,6 +40,8 @@
     margin-top: auto;
     margin-bottom: 20px;
 }
+
+
 
 .content-container{
     background-color: rgb(255, 255, 255);
