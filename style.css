@@ -6,9 +6,12 @@
     
 }
 
+
 .main-wrapper{
     display: flex;
 }
+
+/* Styling for left navigation panel */
 
 .left-nav{
     display: flex;
@@ -41,6 +44,9 @@
     margin-bottom: 20px;
 }
 
+
+
+/* Styling for content section */
 
 
 .content-container{
