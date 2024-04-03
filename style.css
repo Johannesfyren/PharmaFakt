@@ -9,13 +9,33 @@
 .main-wrapper{
     display: flex;
 }
+
 .left-nav{
-    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(240, 240, 240);
     height:100vh;
     width: 250px;
 }
+
+.left-nav a{
+    padding-left: 20px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: black;
+}
+.left-nav a:first-child{
+    margin-top: 50px;
+}
+
+.left-nav a:last-child{
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
 .content-container{
-    background-color: rgb(0, 255, 42);
+    background-color: rgb(255, 255, 255);
     height:100vh;
     width: 100%;
     
