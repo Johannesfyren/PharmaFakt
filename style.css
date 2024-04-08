@@ -1,10 +1,21 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: "Roboto";
     box-sizing: border-box;
+}
+
+:root{
+    --primary-color:rgb(48, 93, 241);
+    --secondary-color:rgb(48, 93, 241);
+    --nav-color: rgb(240, 240, 240);
     
 }
+
+
+
+
+
+
 
 
 .main-wrapper{
@@ -16,7 +27,7 @@
 .left-nav{
     display: flex;
     flex-direction: column;
-    background-color: rgb(240, 240, 240);
+    background-color: var(--nav-color);
     height:100vh;
     width: 230px;
     border-right: 1px solid rgb(201, 200, 200);
@@ -51,7 +62,24 @@
 
 .content-container{
     background-color: rgb(255, 255, 255);
-    height:100vh;
+    height: 100vh;
     width: 100%;
+}
+
+.child-content-container{
+    display: flex;
+    height: auto;
+    justify-content: start;
+    margin: 50px 50px;
+}
+
+.child-content-container > div{
+    margin: 0px 50px 0px 0px;
+    width: clamp(300px, 400px, 600px);
+}
+.child-content-container > div > div{
+    min-height: 30vh;
     
+    background-color: var(--primary-color);
+    border-radius: 10px;
 }
