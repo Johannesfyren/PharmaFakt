@@ -63,23 +63,28 @@
 .content-container{
     background-color: rgb(255, 255, 255);
     height: 100vh;
-    width: 100%;
+    
 }
 
 .child-content-container{
     display: flex;
     height: auto;
     justify-content: start;
-    margin: 50px 50px;
+    width: 80vw;
 }
 
 .child-content-container > div{
-    margin: 0px 50px 0px 0px;
-    width: clamp(300px, 400px, 600px);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+    margin-left: 50px;
+    margin-top: 50px;
+    width: 400px;
+    gap: 10px;
+    
 }
 .child-content-container > div > div{
     min-height: 30vh;
-    
     background-color: var(--primary-color);
     border-radius: 10px;
 }
