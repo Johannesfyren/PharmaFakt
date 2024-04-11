@@ -23,8 +23,16 @@
 }
 
 /* Styling for left navigation panel */
+.collapseButton{
+    position: fixed;
+    left: 200px;
+    top: 10px;
+}
 
 .left-nav{
+    position: relative;
+    top: 0px;
+    right: 0px;
     display: flex;
     flex-direction: column;
     background-color: var(--nav-color);
