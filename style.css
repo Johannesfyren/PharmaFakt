@@ -24,9 +24,16 @@
 
 /* Styling for left navigation panel */
 .collapseButton{
+    font-size:40px;
     position: fixed;
-    left: 200px;
+    left: 210px;
     top: 10px;
+    --ionicon-stroke-width: 15px;
+    color: rgb(8, 133, 243);
+   
+}
+.collapseButton:hover{
+    cursor: pointer;
 }
 
 .left-nav{
