@@ -73,16 +73,9 @@ function createDispatchElements(){
 
 
 function getAllCustomerOptions(){
-    
     for (let i = 0;i<customer.length;i++){
         const createOption = document.createElement("option");
-        console.log(createOption);
         createOption.textContent = customer[i].name;
-        console.log(createOption);
-        selectCustomer.append(createOption);
-        
-        
-        
-        // selectCustomer.append(createOption.nodeValue = `${customer[i].name}`);
+        selectCustomer.append(createOption); 
     }
 }
