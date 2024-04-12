@@ -175,9 +175,10 @@ h1{
 
 #customer-details-wrapper{
     display: flex;
+    flex-direction: row;
     height: calc(var(--dispatch-vh)/2);
     flex-grow: 1;
-    background-color: black;
+    background-color: red;
 }
 
 #vet-details-wrapper{
