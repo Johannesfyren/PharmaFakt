@@ -6,12 +6,11 @@
 
 :root{
     --primary-color:rgb(48, 93, 241);
-    --secondary-color:rgb(48, 93, 241);
+    --secondary-color:rgb(104, 133, 230);
     --nav-color: rgb(240, 240, 240);
+    --news-background-new:rgb(133, 180, 133);
     
 }
-
-
 
 
 
@@ -21,6 +20,8 @@
 .main-wrapper{
     display: flex;
 }
+
+
 
 /* Styling for left navigation panel */
 .collapseButton{
@@ -100,6 +101,14 @@
 }
 .child-content-container > div > div{
     min-height: 30vh;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     border-radius: 10px;
+}
+
+
+/* Internal Notes */
+.internal-notes{
+    width: 100%;
+    height:60px;
+    border-bottom: 1px solid grey;
 }
