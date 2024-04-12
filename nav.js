@@ -1,6 +1,6 @@
 const collapseNavButton = document.querySelector('.collapseButton');
 const navigationContainer = document.querySelector('.left-nav');
-
+let navClosed = false;
 collapseNavButton.addEventListener("click", (e) =>{
     if (navClosed == false){
         navigationContainer.setAttribute("style", "right:230px;width:0; transition:0.2s;");

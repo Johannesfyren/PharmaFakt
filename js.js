@@ -1,6 +1,6 @@
 const internalNoteContainer = document.querySelector('.internal-note-container');
 const addNoteButton = document.querySelector('#add-note-button');
-let navClosed = false;
+
 
 
 addNoteButton.addEventListener("click", (e)=>{
