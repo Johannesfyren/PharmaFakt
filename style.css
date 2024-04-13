@@ -169,7 +169,6 @@ h3{
     flex-direction: column;
     flex-grow: 1;
     width: 100%;
-    background-color: blue;
     padding: 20px 20px;
     gap: 10px;
 }
@@ -183,7 +182,6 @@ h3{
     flex-direction: column;
     height: calc(var(--dispatch-vh)/2);
     flex-grow: 1;
-    background-color: red;
     padding: 20px 20px;
 }
 #customer-details-wrapper> * {
@@ -196,7 +194,6 @@ h3{
     height: calc(var(--dispatch-vh)/2);
     flex-grow: 1;
     width: 100%;
-    background-color: green;
     
 }
 #vet-details-wrapper> * {

@@ -120,18 +120,18 @@ selectCustomer.addEventListener("change", (e)=>{
     customerDeliveryAddress.textContent = chosenCustomer[0].deliverAddress;
     
     custDetailsWrapper.append(custHeaderIconDiv1);
-    custHeaderIconDiv1.append(customerNameLabel);
     custHeaderIconDiv1.append(nameIcon);
+    custHeaderIconDiv1.append(customerNameLabel);
     custDetailsWrapper.append(customerName);
 
     custDetailsWrapper.append(custHeaderIconDiv2);
-    custHeaderIconDiv2.append(customerAddressLabel);
     custHeaderIconDiv2.append(addressIcon);
+    custHeaderIconDiv2.append(customerAddressLabel);
     custDetailsWrapper.append(customerAddress);
 
     custDetailsWrapper.append(custHeaderIconDiv3);
-    custHeaderIconDiv3.append(customerDeliveryAddressLabel);
     custHeaderIconDiv3.append(deliveryIcon);
+    custHeaderIconDiv3.append(customerDeliveryAddressLabel);
     custDetailsWrapper.append(customerDeliveryAddress);
 });
 
@@ -166,18 +166,18 @@ function createDispatchElements(){
 
     //second div with p elements
     custDetailsWrapper.append(custHeaderIconDiv1);
-    custHeaderIconDiv1.append(customerNameLabel);
     custHeaderIconDiv1.append(nameIcon);
+    custHeaderIconDiv1.append(customerNameLabel);
     custDetailsWrapper.append(customerName);
 
     custDetailsWrapper.append(custHeaderIconDiv2);
-    custHeaderIconDiv2.append(customerAddressLabel);
     custHeaderIconDiv2.append(addressIcon);
+    custHeaderIconDiv2.append(customerAddressLabel);
     custDetailsWrapper.append(customerAddress);
 
     custDetailsWrapper.append(custHeaderIconDiv3);
-    custHeaderIconDiv3.append(customerDeliveryAddressLabel);
     custHeaderIconDiv3.append(deliveryIcon);
+    custHeaderIconDiv3.append(customerDeliveryAddressLabel);
     custDetailsWrapper.append(customerDeliveryAddress);
 
 
