@@ -103,9 +103,9 @@ vetIcon.setAttribute("src", "img/icons/vet_icon.png");
 custHeaderIconDiv1.setAttribute("class","flex-header-paragraph");
 custHeaderIconDiv2.setAttribute("class","flex-header-paragraph");
 custHeaderIconDiv3.setAttribute("class","flex-header-paragraph");
-nameIcon.setAttribute("src", "img/icons/vet_icon.png");
-addressIcon.setAttribute("src", "img/icons/vet_icon.png");
-deliveryIcon.setAttribute("src", "img/icons/vet_icon.png");
+nameIcon.setAttribute("src", "img/icons/name_icon.png");
+addressIcon.setAttribute("src", "img/icons/home_icon.png");
+deliveryIcon.setAttribute("src", "img/icons/delivery_icon.png");
 
 
 
