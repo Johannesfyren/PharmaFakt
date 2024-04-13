@@ -35,12 +35,17 @@ const vet = [{
     authID: "1290",
 }];
 
+
 const body = document.querySelector("body");
 const createDispatchBtn = document.querySelector("#new-dispatch-btn");
 
 const dispatchContainer = document.createElement("div");
 const upperSectionWrapper = document.createElement("div");
 const custVetWrapper = document.createElement("div");
+const customerIcon = document.createElement("img");
+const vetIcon = document.createElement("img");
+const iconSelectDiv1 = document.createElement("div");
+const iconSelectDiv2 = document.createElement("div");
 const selectCustomer = document.createElement("select");
 const selectVet = document.createElement("select");
 const custDetailsWrapper = document.createElement("div");
@@ -62,6 +67,11 @@ vetDetailsWrapper.setAttribute("id","vet-details-wrapper");
 selectCustomer.setAttribute("id","customers");
 selectCustomer.setAttribute("name","customers");
 selectVet.setAttribute("id","vets");
+
+iconSelectDiv1.setAttribute("class", "flex-icon-element");
+iconSelectDiv2.setAttribute("class", "flex-icon-element");
+customerIcon.setAttribute("src", "img/icons/customer_icon.png");
+vetIcon.setAttribute("src", "img/icons/vet_icon.png");
 
 createDispatchBtn.addEventListener("click", ()=>{
     createDispatchElements();
@@ -94,8 +104,13 @@ function createDispatchElements(){
     upperSectionWrapper.append(custVetWrapper);
     upperSectionWrapper.append(custDetailsWrapper);
     upperSectionWrapper.append(vetDetailsWrapper);
-    custVetWrapper.append(selectCustomer);
-    custVetWrapper.append(selectVet);
+    custVetWrapper.append(iconSelectDiv1);
+    iconSelectDiv1.append(customerIcon);
+    iconSelectDiv1.append(selectCustomer);
+    custVetWrapper.append(iconSelectDiv2);
+    iconSelectDiv2.append(vetIcon);
+    iconSelectDiv2.append(selectVet);
+    
     getAllCustVetOptions();
 
     //second div with p elements
