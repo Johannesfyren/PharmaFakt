@@ -77,13 +77,26 @@ customerDeliveryAddressLabel.textContent = "Delivery Address";
 
 
 //right div with Vet details
+const vetHeaderIconDiv1 = document.createElement("div");
+const vetHeaderIconDiv2 = document.createElement("div");
+const vetHeaderIconDiv3 = document.createElement("div");
+const vetNameIcon = document.createElement("img");
+const vetAddressIcon = document.createElement("img");
+const authIcon = document.createElement("img");
+
 const vetNameLabel = document.createElement("h3");
 const vetName = document.createElement("p");
 const vetAddressLabel = document.createElement("h3");
 const vetAddress = document.createElement("p");
 const vetAuthIDLabel = document.createElement("h3");
 const vetAuthID = document.createElement("p");
+vetNameLabel.textContent = "Name";
+vetAddressLabel.textContent = "Address";
+vetAuthIDLabel.textContent = "Authorization ID";
 
+
+
+//----set attributes-----
 dispatchContainer.setAttribute("class","dispatch-container");
 upperSectionWrapper.setAttribute("id","custvet-detail-wrapper");
 custVetWrapper.setAttribute("id","customer-vet-wrapper");
@@ -107,7 +120,12 @@ nameIcon.setAttribute("src", "img/icons/name_icon.png");
 addressIcon.setAttribute("src", "img/icons/home_icon.png");
 deliveryIcon.setAttribute("src", "img/icons/delivery_icon.png");
 
-
+vetHeaderIconDiv1.setAttribute("class","flex-header-paragraph");
+vetHeaderIconDiv2.setAttribute("class","flex-header-paragraph");
+vetHeaderIconDiv3.setAttribute("class","flex-header-paragraph");
+vetNameIcon.setAttribute("src", "img/icons/name_icon.png");
+vetAddressIcon.setAttribute("src", "img/icons/home_icon.png");
+authIcon.setAttribute("src", "img/icons/authid_icon.png");
 
 createDispatchBtn.addEventListener("click", ()=>{
     createDispatchElements();
@@ -140,9 +158,21 @@ selectVet.addEventListener("change", (e)=>{
     vetName.textContent = chosenVet[0].name;
     vetAddress.textContent = chosenVet[0].address;
     vetAuthID.textContent = chosenVet[0].authID;
+
+    vetDetailsWrapper.append(vetHeaderIconDiv1);
+    vetHeaderIconDiv1.append(vetNameIcon);
+    vetHeaderIconDiv1.append(vetNameLabel);
     vetDetailsWrapper.append(vetName);
+
+    vetDetailsWrapper.append(vetHeaderIconDiv2);
+    vetHeaderIconDiv2.append(vetAddressIcon);
+    vetHeaderIconDiv2.append(vetAddressLabel);
     vetDetailsWrapper.append(vetAddress);
-    vetDetailsWrapper.append(vetAuthID); 
+
+    vetDetailsWrapper.append(vetHeaderIconDiv3);
+    vetHeaderIconDiv3.append(authIcon);
+    vetHeaderIconDiv3.append(vetAuthIDLabel);
+    vetDetailsWrapper.append(vetAuthID);
 });
 
 function createDispatchElements(){
@@ -162,7 +192,7 @@ function createDispatchElements(){
     iconSelectDiv2.append(vetIcon);
     iconSelectDiv2.append(selectVet);
     
-    getAllCustVetOptions();
+    getAllCustVetOptions(); //just filling the select boxes
 
     //second div with p elements
     custDetailsWrapper.append(custHeaderIconDiv1);
@@ -182,9 +212,21 @@ function createDispatchElements(){
 
 
     //third div with p elements
+    vetDetailsWrapper.append(vetHeaderIconDiv1);
+    vetHeaderIconDiv1.append(vetNameIcon);
+    vetHeaderIconDiv1.append(vetNameLabel);
     vetDetailsWrapper.append(vetName);
+
+    vetDetailsWrapper.append(vetHeaderIconDiv2);
+    vetHeaderIconDiv2.append(vetAddressIcon);
+    vetHeaderIconDiv2.append(vetAddressLabel);
     vetDetailsWrapper.append(vetAddress);
+   
+    vetDetailsWrapper.append(vetHeaderIconDiv3);
+    vetHeaderIconDiv3.append(authIcon);
+    vetHeaderIconDiv3.append(vetAuthIDLabel);
     vetDetailsWrapper.append(vetAuthID);
+   
 }
 
 function getAllCustVetOptions(){
@@ -212,3 +254,5 @@ function getCustomerDetails(customerName){
 function getVetDetails(vetName){
     return foundVet = vet.filter(vet => vet.name == vetName); 
 }
+
+
