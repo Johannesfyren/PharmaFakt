@@ -186,9 +186,13 @@ h1{
 
 #vet-details-wrapper{
     display: flex;
+    flex-direction: column;
     height: calc(var(--dispatch-vh)/2);
     flex-grow: 1;
     background-color: green;
+}
+#vet-details-wrapper> * {
+    padding: 10px;
 }
 
 
