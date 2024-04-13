@@ -39,6 +39,7 @@ const vet = [{
 const body = document.querySelector("body");
 const createDispatchBtn = document.querySelector("#new-dispatch-btn");
 
+//Left div with selectors
 const dispatchContainer = document.createElement("div");
 const upperSectionWrapper = document.createElement("div");
 const custVetWrapper = document.createElement("div");
@@ -51,12 +52,36 @@ const selectVet = document.createElement("select");
 const custDetailsWrapper = document.createElement("div");
 const vetDetailsWrapper = document.createElement("div");
 
-const customerName = document.createElement("p");
-const customerAddress = document.createElement("p");
-const customerDeliveryAddress = document.createElement("p");
 
+
+
+//Middle div with Customer details
+const custHeaderIconDiv1 = document.createElement("div");
+const custHeaderIconDiv2 = document.createElement("div");
+const custHeaderIconDiv3 = document.createElement("div");
+const nameIcon = document.createElement("img");
+const addressIcon = document.createElement("img");
+const deliveryIcon = document.createElement("img");
+
+const customerNameLabel = document.createElement("h3");
+const customerName = document.createElement("p");
+const customerAddressLabel = document.createElement("h3");
+const customerAddress = document.createElement("p");
+const customerDeliveryAddressLabel = document.createElement("h3");
+const customerDeliveryAddress = document.createElement("p");
+customerNameLabel.textContent = "Name";
+customerAddressLabel.textContent = "Address";
+customerDeliveryAddressLabel.textContent = "Delivery Address";
+
+
+
+
+//right div with Vet details
+const vetNameLabel = document.createElement("h3");
 const vetName = document.createElement("p");
+const vetAddressLabel = document.createElement("h3");
 const vetAddress = document.createElement("p");
+const vetAuthIDLabel = document.createElement("h3");
 const vetAuthID = document.createElement("p");
 
 dispatchContainer.setAttribute("class","dispatch-container");
@@ -67,11 +92,22 @@ vetDetailsWrapper.setAttribute("id","vet-details-wrapper");
 selectCustomer.setAttribute("id","customers");
 selectCustomer.setAttribute("name","customers");
 selectVet.setAttribute("id","vets");
+selectVet.setAttribute("name","vets");
+
 
 iconSelectDiv1.setAttribute("class", "flex-icon-element");
 iconSelectDiv2.setAttribute("class", "flex-icon-element");
 customerIcon.setAttribute("src", "img/icons/customer_icon.png");
 vetIcon.setAttribute("src", "img/icons/vet_icon.png");
+
+custHeaderIconDiv1.setAttribute("class","flex-header-paragraph");
+custHeaderIconDiv2.setAttribute("class","flex-header-paragraph");
+custHeaderIconDiv3.setAttribute("class","flex-header-paragraph");
+nameIcon.setAttribute("src", "img/icons/vet_icon.png");
+addressIcon.setAttribute("src", "img/icons/vet_icon.png");
+deliveryIcon.setAttribute("src", "img/icons/vet_icon.png");
+
+
 
 createDispatchBtn.addEventListener("click", ()=>{
     createDispatchElements();
@@ -82,10 +118,23 @@ selectCustomer.addEventListener("change", (e)=>{
     customerName.textContent = chosenCustomer[0].name;
     customerAddress.textContent = chosenCustomer[0].address;
     customerDeliveryAddress.textContent = chosenCustomer[0].deliverAddress;
+    
+    custDetailsWrapper.append(custHeaderIconDiv1);
+    custHeaderIconDiv1.append(customerNameLabel);
+    custHeaderIconDiv1.append(nameIcon);
     custDetailsWrapper.append(customerName);
+
+    custDetailsWrapper.append(custHeaderIconDiv2);
+    custHeaderIconDiv2.append(customerAddressLabel);
+    custHeaderIconDiv2.append(addressIcon);
     custDetailsWrapper.append(customerAddress);
-    custDetailsWrapper.append(customerDeliveryAddress); 
+
+    custDetailsWrapper.append(custHeaderIconDiv3);
+    custHeaderIconDiv3.append(customerDeliveryAddressLabel);
+    custHeaderIconDiv3.append(deliveryIcon);
+    custDetailsWrapper.append(customerDeliveryAddress);
 });
+
 selectVet.addEventListener("change", (e)=>{
     const chosenVet = getVetDetails(e.target.value);
     vetName.textContent = chosenVet[0].name;
@@ -104,9 +153,11 @@ function createDispatchElements(){
     upperSectionWrapper.append(custVetWrapper);
     upperSectionWrapper.append(custDetailsWrapper);
     upperSectionWrapper.append(vetDetailsWrapper);
+
     custVetWrapper.append(iconSelectDiv1);
     iconSelectDiv1.append(customerIcon);
     iconSelectDiv1.append(selectCustomer);
+
     custVetWrapper.append(iconSelectDiv2);
     iconSelectDiv2.append(vetIcon);
     iconSelectDiv2.append(selectVet);
@@ -114,8 +165,19 @@ function createDispatchElements(){
     getAllCustVetOptions();
 
     //second div with p elements
+    custDetailsWrapper.append(custHeaderIconDiv1);
+    custHeaderIconDiv1.append(customerNameLabel);
+    custHeaderIconDiv1.append(nameIcon);
     custDetailsWrapper.append(customerName);
+
+    custDetailsWrapper.append(custHeaderIconDiv2);
+    custHeaderIconDiv2.append(customerAddressLabel);
+    custHeaderIconDiv2.append(addressIcon);
     custDetailsWrapper.append(customerAddress);
+
+    custDetailsWrapper.append(custHeaderIconDiv3);
+    custHeaderIconDiv3.append(customerDeliveryAddressLabel);
+    custHeaderIconDiv3.append(deliveryIcon);
     custDetailsWrapper.append(customerDeliveryAddress);
 
 
