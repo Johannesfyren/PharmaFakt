@@ -175,10 +175,13 @@ h1{
 
 #customer-details-wrapper{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: calc(var(--dispatch-vh)/2);
     flex-grow: 1;
     background-color: red;
+}
+#customer-details-wrapper> * {
+    padding: 10px;
 }
 
 #vet-details-wrapper{

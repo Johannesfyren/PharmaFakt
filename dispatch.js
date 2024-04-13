@@ -1,14 +1,17 @@
 const customer = [{
+    ID:1,
     name: "John Deer",
     address: "Bakers Street 39",
     deliverAddress: "Bakers Street 39",
 },
 {
+    ID:2,
     name: "Kathrina Baker",
     address: "Country Street 1",
     deliverAddress: "Bakers Mainroad 39",
 },
 {
+    ID:3,
     name: "Hans Hinterseer",
     address: "South Avenue 2",
     deliverAddress: "South Avenue 2",
@@ -46,6 +49,16 @@ createDispatchBtn.addEventListener("click", ()=>{
     createDispatchElements();
 });
 
+selectCustomer.addEventListener("change", (e)=>{
+    const chosenCustomer = getCustomerDetails(e.target.value);
+    customerName.textContent = chosenCustomer[0].name;
+    customerAddress.textContent = chosenCustomer[0].address;
+    customerDeliveryAddress.textContent = chosenCustomer[0].deliverAddress;
+    custDetailsWrapper.append(customerName);
+    custDetailsWrapper.append(customerAddress);
+    custDetailsWrapper.append(customerDeliveryAddress);
+    
+});
 
 function createDispatchElements(){
     body.append(dispatchContainer);
@@ -71,11 +84,18 @@ function createDispatchElements(){
     vetDetailsWrapper.append(vetAuthID);
 }
 
-
 function getAllCustomerOptions(){
+    
+    const createOption = document.createElement("option");
+    selectCustomer.append(createOption); //Create blank, so list is not prefilled with info
+
     for (let i = 0;i<customer.length;i++){
         const createOption = document.createElement("option");
         createOption.textContent = customer[i].name;
         selectCustomer.append(createOption); 
     }
+}
+
+function getCustomerDetails(customerName){
+    return foundCustomer = customer.filter(customer => customer.name == customerName); 
 }
