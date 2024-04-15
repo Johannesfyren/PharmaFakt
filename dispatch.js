@@ -1,3 +1,15 @@
+const dispatches = [{
+    customer: "Customer",
+    authorizor:"Autho",
+    totalprice: "100",
+},
+{
+    customer: "Catharine",
+    authorizor:"John",
+    totalprice: "10",
+},
+];
+
 const customer = [{
     ID:1,
     name: "John Deer",
@@ -35,6 +47,10 @@ const vet = [{
     authID: "1290",
 }];
 
+let chosenCustomer;
+let chosenVet;
+
+
 const dispatchTableHeaders= ["Item","Quantity","Price","Actions"];
 const dispatchTableData = [{}];
 
@@ -44,6 +60,8 @@ const createDispatchBtn = document.querySelector("#new-dispatch-btn");
 const dispatchContainer = document.createElement("div");
 const upperSectionWrapper = document.createElement("div");
 const exitNewDispatch = document.createElement("button");
+let allDispatchesTable = document.querySelector("#DispatchTable");
+createAllDispatchTable();
 
 //Left div with selectors
 const custVetWrapper = document.createElement("div");
@@ -105,6 +123,7 @@ vetAuthIDLabel.textContent = "Authorization ID";
 const itemContainer = document.createElement("div");
 const newItemButton = document.createElement("button");
 const tableElement = document.createElement ("table");
+const saveInputButton = document.createElement("button");
 
 
 
@@ -155,17 +174,49 @@ authIcon.setAttribute("src", "img/icons/authid_icon.png");
 //bottom half
 itemContainer.setAttribute("class","item-container");
 newItemButton.setAttribute("class","secondary-btn");
+saveInputButton.setAttribute("class", "primary-btn save-input-btn-checkout");
 
 
 
 
+
+saveInputButton.addEventListener("click", ()=>{
+    const checkOutCustomer = chosenCustomer[0].name;
+    const checkOutVet = chosenVet[0].name;
+    
+    const calculatePrice = dispatchTableData
+    .filter((price) => price.totalprice)
+    .map((total)=> total = total.totalprice)
+    .reduce((sum,currentvalue) => sum=Number(sum)+Number(currentvalue));
+    
+
+    const saveInputData = {
+        customer: chosenCustomer[0].name, 
+        authorizor: chosenVet[0].name, 
+        totalprice: calculatePrice};
+
+    dispatches.push(saveInputData);
+    
+    const tbody = document.createElement("tbody");
+    const tdName = document.createElement("td");
+    const tdQuant = document.createElement("td");
+    const tdPrice = document.createElement("td");
+
+    tdName.textContent = checkOutCustomer;
+    tdQuant.textContent = checkOutVet;
+    tdPrice.textContent = calculatePrice;
+
+    allDispatchesTable.append(tbody);
+    tbody.append(tdName);
+    tbody.append(tdQuant);
+    tbody.append(tdPrice);
+    dispatchContainer.remove();
+});
 
 
 
 exitNewDispatch.addEventListener("click", ()=>{
     dispatchContainer.remove();
-    tableElement.remove();
-    selectVet.remove();
 });
 
 createDispatchBtn.addEventListener("click", ()=>{
@@ -173,7 +224,7 @@ createDispatchBtn.addEventListener("click", ()=>{
 });
 
 selectCustomer.addEventListener("change", (e)=>{
-    const chosenCustomer = getCustomerDetails(e.target.value);
+    chosenCustomer = getCustomerDetails(e.target.value);
     customerName.textContent = chosenCustomer[0].name;
     customerAddress.textContent = chosenCustomer[0].address;
     customerDeliveryAddress.textContent = chosenCustomer[0].deliverAddress;
@@ -195,7 +246,7 @@ selectCustomer.addEventListener("change", (e)=>{
 });
 
 selectVet.addEventListener("change", (e)=>{
-    const chosenVet = getVetDetails(e.target.value);
+    chosenVet = getVetDetails(e.target.value);
     vetName.textContent = chosenVet[0].name;
     vetAddress.textContent = chosenVet[0].address;
     vetAuthID.textContent = chosenVet[0].authID;
@@ -285,6 +336,9 @@ function createDispatchElements(){
     newItemButton.textContent = "New Item";
     itemContainer.append(newItemButton);
     itemContainer.append(tableElement);
+    saveInputButton.textContent = "Checkout";
+    dispatchContainer.append(saveInputButton);
+
 
     createDispatchTable();
    
@@ -326,7 +380,7 @@ function createDispatchTable(){
         tableHeader.append(th);
     }
 
-    if(Object.keys(dispatchTableData[i]).length != 0){ //Checks if any data is in the table, to not put in empty data
+    if(Object.keys(dispatchTableData[0]).length != 0){ //Checks if any data is in the table, to not put in empty data
         for(let i = 0;i<dispatchTableData.length;i++){ //table data
             const numberOfKeysInObj = Object.keys(dispatchTableData[i]).length; //Checks length on object keys
             const tbody = document.createElement("tbody");
@@ -358,7 +412,28 @@ function addItemDispatchTable(newObj){
     tdPrice.textContent = newObj.totalprice;
 
     tableElement.append(tbody);
-    tableElement.append(tdName);
-    tableElement.append(tdQuant);
-    tableElement.append(tdPrice);
+    tbody.append(tdName);
+    tbody.append(tdQuant);
+    tbody.append(tdPrice);
+}
+
+
+function createAllDispatchTable(){
+    
+    for(let i = 0; i<dispatches.length;i++){
+        const tbody = document.createElement("tbody");
+        const tdName = document.createElement("td");
+        const tdQuant = document.createElement("td");
+        const tdPrice = document.createElement("td");
+    
+        tdName.textContent = dispatches[i].customer;
+        tdQuant.textContent = dispatches[i].authorizor;
+        tdPrice.textContent = dispatches[i].totalprice;
+    
+        allDispatchesTable.append(tbody);
+        tbody.append(tdName);
+        tbody.append(tdQuant);
+        tbody.append(tdPrice);
+    }
+    
 }
