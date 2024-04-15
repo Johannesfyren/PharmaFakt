@@ -36,23 +36,14 @@ const vet = [{
 }];
 
 const dispatchTableHeaders= ["Item","Quantity","Price","Actions"];
-const dispatchTableData = [{
-    name: "Ibuprofen",
-    quantity: "2",
-    totalprice: "10$",
-},
-{
-    name: "Penovet",
-    quantity: "5",
-    totalprice: "11$",
-},
-];
+const dispatchTableData = [{}];
 
 
 const body = document.querySelector("body");
 const createDispatchBtn = document.querySelector("#new-dispatch-btn");
 const dispatchContainer = document.createElement("div");
 const upperSectionWrapper = document.createElement("div");
+const exitNewDispatch = document.createElement("button");
 
 //Left div with selectors
 const custVetWrapper = document.createElement("div");
@@ -130,6 +121,8 @@ const tableElement = document.createElement ("table");
 //----set attributes-----
 dispatchContainer.setAttribute("class","dispatch-container");
 upperSectionWrapper.setAttribute("id","custvet-detail-wrapper");
+exitNewDispatch.setAttribute("id","exit-btn");
+exitNewDispatch.textContent ="X";
 custVetWrapper.setAttribute("id","customer-vet-wrapper");
 custDetailsWrapper.setAttribute("id","customer-details-wrapper");
 vetDetailsWrapper.setAttribute("id","vet-details-wrapper");
@@ -161,7 +154,7 @@ authIcon.setAttribute("src", "img/icons/authid_icon.png");
 
 //bottom half
 itemContainer.setAttribute("class","item-container");
-newItemButton.setAttribute("class","primary-btn");
+newItemButton.setAttribute("class","secondary-btn");
 
 
 
@@ -169,7 +162,11 @@ newItemButton.setAttribute("class","primary-btn");
 
 
 
-
+exitNewDispatch.addEventListener("click", ()=>{
+    dispatchContainer.remove();
+    tableElement.remove();
+    selectVet.remove();
+});
 
 createDispatchBtn.addEventListener("click", ()=>{
     createDispatchElements();
@@ -219,9 +216,20 @@ selectVet.addEventListener("change", (e)=>{
     vetDetailsWrapper.append(vetAuthID);
 });
 
+newItemButton.addEventListener("click", (e)=>{
+    const inputItemName = prompt();
+    const inputItemQuantity = prompt();
+    const inputItemPrice = prompt();
+
+    let newObj = {name:inputItemName, quantity:inputItemQuantity, totalprice:inputItemPrice};
+    dispatchTableData.push(newObj);
+    addItemDispatchTable(newObj);
+});
+
 function createDispatchElements(){
     body.append(dispatchContainer);
     dispatchContainer.append(upperSectionWrapper);
+    dispatchContainer.append(exitNewDispatch);
 
     upperSectionWrapper.append(custVetWrapper);
     upperSectionWrapper.append(custDetailsWrapper);
@@ -278,7 +286,7 @@ function createDispatchElements(){
     itemContainer.append(newItemButton);
     itemContainer.append(tableElement);
 
-createDispatchTable();
+    createDispatchTable();
    
 }
 
@@ -318,21 +326,39 @@ function createDispatchTable(){
         tableHeader.append(th);
     }
 
-
-    for(let i = 0;i<dispatchTableData.length;i++){ //table data
-        const numberOfKeysInObj = Object.keys(dispatchTableData[i]).length; //Checks length on object keys
-        const tbody = document.createElement("tbody");
-        const tdName = document.createElement("td");
-        const tdQuant = document.createElement("td");
-        const tdPrice = document.createElement("td");
-
-        tdName.textContent = dispatchTableData[i].name;
-        tdQuant.textContent = dispatchTableData[i].quantity;
-        tdPrice.textContent = dispatchTableData[i].totalprice;
-
-        tableElement.append(tbody);
-        tableElement.append(tdName);
-        tableElement.append(tdQuant);
-        tableElement.append(tdPrice);
+    if(Object.keys(dispatchTableData[i]).length != 0){ //Checks if any data is in the table, to not put in empty data
+        for(let i = 0;i<dispatchTableData.length;i++){ //table data
+            const numberOfKeysInObj = Object.keys(dispatchTableData[i]).length; //Checks length on object keys
+            const tbody = document.createElement("tbody");
+            const tdName = document.createElement("td");
+            const tdQuant = document.createElement("td");
+            const tdPrice = document.createElement("td");
+    
+            tdName.textContent = dispatchTableData[i].name;
+            tdQuant.textContent = dispatchTableData[i].quantity;
+            tdPrice.textContent = dispatchTableData[i].totalprice;
+    
+            tableElement.append(tbody);
+            tableElement.append(tdName);
+            tableElement.append(tdQuant);
+            tableElement.append(tdPrice);
+        }
     }
+    
+}
+
+function addItemDispatchTable(newObj){
+    const tbody = document.createElement("tbody");
+    const tdName = document.createElement("td");
+    const tdQuant = document.createElement("td");
+    const tdPrice = document.createElement("td");
+
+    tdName.textContent = newObj.name;
+    tdQuant.textContent = newObj.quantity;
+    tdPrice.textContent = newObj.totalprice;
+
+    tableElement.append(tbody);
+    tableElement.append(tdName);
+    tableElement.append(tdQuant);
+    tableElement.append(tdPrice);
 }
