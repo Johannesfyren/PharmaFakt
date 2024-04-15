@@ -9,7 +9,6 @@ addNoteButton.addEventListener("click", (e)=>{
     ];
     const currentDate = new Date;
     const userInput = prompt("Write note..");
-    console.log(userInput);
 
 
     if (userInput) {

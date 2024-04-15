@@ -161,6 +161,8 @@ h3{
 #custvet-detail-wrapper{
     display: flex;
     justify-content: space-around;
+    gap: 10px;
+    padding: 10px;
 }
 
 #customer-vet-wrapper{
@@ -170,6 +172,8 @@ h3{
     width: 100%;
     padding: 20px 20px;
     gap: 10px;
+    border: 1px solid rgb(155, 154, 154);
+    border-radius: 5px;
 }
 #customer-vet-wrapper > *{
     padding: 10px;
@@ -181,6 +185,8 @@ h3{
     width: 100%;
     height: calc(var(--dispatch-vh)/2);
     padding: 20px 20px;
+    border: 1px solid rgb(155, 154, 154);
+    border-radius: 5px;
 }
 #customer-details-wrapper p {
     padding: 10px 0 30px 0;
@@ -192,6 +198,8 @@ h3{
     height: calc(var(--dispatch-vh)/2);
     width: 100%;
     padding: 20px 20px 0px 20px;
+    border: 1px solid rgb(155, 154, 154);
+    border-radius: 5px;
 }
 
 #vet-details-wrapper p{
@@ -225,10 +233,35 @@ h3{
     width: 25px;
 }
 
-
+.container-with-header{
+    display: flex;
+    height: 400px;
+    width: auto;
+}
 /* -- lower part -- */
 
+.item-container{
+    width: 100%;
+    height:600px;
+    
+    
+}
+.item-container table,td,th{
+    width: 100%;
+    border: 1px solid rgb(155, 154, 154);
+    border-radius: 5px;
+    border-collapse: collapse;
+}
 
+.item-container th{
+    height: 30px;
+    font-size: 20;
+    font-weight: 700;
+    text-align: left;
+}
+.item-container td{
+    
+}
 
 
 

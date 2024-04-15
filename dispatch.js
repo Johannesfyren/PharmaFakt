@@ -35,13 +35,26 @@ const vet = [{
     authID: "1290",
 }];
 
+const dispatchTableHeaders= ["Item","Quantity","Price","Actions"];
+const dispatchTableData = [{
+    name: "Ibuprofen",
+    quantity: "2",
+    totalprice: "10$",
+},
+{
+    name: "Penovet",
+    quantity: "5",
+    totalprice: "11$",
+},
+];
+
 
 const body = document.querySelector("body");
 const createDispatchBtn = document.querySelector("#new-dispatch-btn");
-
-//Left div with selectors
 const dispatchContainer = document.createElement("div");
 const upperSectionWrapper = document.createElement("div");
+
+//Left div with selectors
 const custVetWrapper = document.createElement("div");
 const customerIcon = document.createElement("img");
 const vetIcon = document.createElement("img");
@@ -56,6 +69,7 @@ const vetDetailsWrapper = document.createElement("div");
 
 
 //Middle div with Customer details
+const customerHeader = document.createElement("h1");
 const custHeaderIconDiv1 = document.createElement("div");
 const custHeaderIconDiv2 = document.createElement("div");
 const custHeaderIconDiv3 = document.createElement("div");
@@ -95,6 +109,23 @@ vetAddressLabel.textContent = "Address";
 vetAuthIDLabel.textContent = "Authorization ID";
 
 
+//Buttom half (Item container)
+
+const itemContainer = document.createElement("div");
+const newItemButton = document.createElement("button");
+const tableElement = document.createElement ("table");
+
+
+
+
+
+
+
+
+
+
+
+
 
 //----set attributes-----
 dispatchContainer.setAttribute("class","dispatch-container");
@@ -113,6 +144,7 @@ iconSelectDiv2.setAttribute("class", "flex-icon-element");
 customerIcon.setAttribute("src", "img/icons/customer_icon.png");
 vetIcon.setAttribute("src", "img/icons/vet_icon.png");
 
+customerHeader.textContent= "Customer Details";
 custHeaderIconDiv1.setAttribute("class","flex-header-paragraph");
 custHeaderIconDiv2.setAttribute("class","flex-header-paragraph");
 custHeaderIconDiv3.setAttribute("class","flex-header-paragraph");
@@ -126,6 +158,18 @@ vetHeaderIconDiv3.setAttribute("class","flex-header-paragraph");
 vetNameIcon.setAttribute("src", "img/icons/name_icon.png");
 vetAddressIcon.setAttribute("src", "img/icons/home_icon.png");
 authIcon.setAttribute("src", "img/icons/authid_icon.png");
+
+//bottom half
+itemContainer.setAttribute("class","item-container");
+newItemButton.setAttribute("class","primary-btn");
+
+
+
+
+
+
+
+
 
 createDispatchBtn.addEventListener("click", ()=>{
     createDispatchElements();
@@ -177,13 +221,13 @@ selectVet.addEventListener("change", (e)=>{
 
 function createDispatchElements(){
     body.append(dispatchContainer);
-
-    //first div with select elements
     dispatchContainer.append(upperSectionWrapper);
+
     upperSectionWrapper.append(custVetWrapper);
     upperSectionWrapper.append(custDetailsWrapper);
     upperSectionWrapper.append(vetDetailsWrapper);
 
+    //first div with select elements
     custVetWrapper.append(iconSelectDiv1);
     iconSelectDiv1.append(customerIcon);
     iconSelectDiv1.append(selectCustomer);
@@ -195,6 +239,7 @@ function createDispatchElements(){
     getAllCustVetOptions(); //just filling the select boxes
 
     //second div with p elements
+    
     custDetailsWrapper.append(custHeaderIconDiv1);
     custHeaderIconDiv1.append(nameIcon);
     custHeaderIconDiv1.append(customerNameLabel);
@@ -226,6 +271,14 @@ function createDispatchElements(){
     vetHeaderIconDiv3.append(authIcon);
     vetHeaderIconDiv3.append(vetAuthIDLabel);
     vetDetailsWrapper.append(vetAuthID);
+
+    // bottom elements
+    dispatchContainer.append(itemContainer);
+    newItemButton.textContent = "New Item";
+    itemContainer.append(newItemButton);
+    itemContainer.append(tableElement);
+
+createDispatchTable();
    
 }
 
@@ -255,4 +308,31 @@ function getVetDetails(vetName){
     return foundVet = vet.filter(vet => vet.name == vetName); 
 }
 
+function createDispatchTable(){
+    const tableHeader = document.createElement("thead");
+    tableElement.append(tableHeader);
 
+    for (let i = 0;i<dispatchTableHeaders.length;i++){ //Headers for table
+        const th = document.createElement("th");
+        th.textContent = dispatchTableHeaders[i];
+        tableHeader.append(th);
+    }
+
+
+    for(let i = 0;i<dispatchTableData.length;i++){ //table data
+        const numberOfKeysInObj = Object.keys(dispatchTableData[i]).length; //Checks length on object keys
+        const tbody = document.createElement("tbody");
+        const tdName = document.createElement("td");
+        const tdQuant = document.createElement("td");
+        const tdPrice = document.createElement("td");
+
+        tdName.textContent = dispatchTableData[i].name;
+        tdQuant.textContent = dispatchTableData[i].quantity;
+        tdPrice.textContent = dispatchTableData[i].totalprice;
+
+        tableElement.append(tbody);
+        tableElement.append(tdName);
+        tableElement.append(tdQuant);
+        tableElement.append(tdPrice);
+    }
+}
